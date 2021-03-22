@@ -1,0 +1,17 @@
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        
+        if matrix==[]:
+            return []
+        
+        ncol = len(matrix[0])
+        nrow = len(matrix)
+        trans = []
+        for i in range(ncol):
+            trans.append([None]*nrow)
+        for i in range(len(matrix)):
+            
+            for j in range(len(matrix[i])):
+                trans[j][i] = matrix[i][j]
+                
+        return trans
