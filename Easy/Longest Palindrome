@@ -1,0 +1,23 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        
+        odd = 0
+        
+        even = 0
+        
+        char = set(s)
+        
+        
+        for i in char:
+            c = s.count(i)
+            if c>1 and c%2==0:
+                even += c
+            
+            elif c>1:
+                even += c - c%2
+                odd = 1
+            
+            else:
+                odd = 1
+        
+        return even if odd==0 else even+1
