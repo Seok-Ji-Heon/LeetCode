@@ -1,0 +1,26 @@
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        
+        output = []
+        
+        word = ''
+        
+        nL = 0
+        
+        nR = 0
+        
+        for i in s:
+            if i=='R':
+                word+=i
+                nR+=1
+            else:
+                word+=i
+                nL+=1
+            
+            if nL==nR:
+                output.append(word)
+                word = ''
+                nL, nR = 0, 0
+        
+        return len(output)
+            
