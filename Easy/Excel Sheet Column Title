@@ -1,0 +1,16 @@
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        
+        dic = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+        
+        output = ''
+        while columnNumber:
+            
+            columnNumber, temp = columnNumber//26, columnNumber%26
+            
+            if temp == 0:
+                columnNumber, temp = columnNumber-1, temp+26
+            
+            output=dic[temp-1] + output
+            
+        return output
