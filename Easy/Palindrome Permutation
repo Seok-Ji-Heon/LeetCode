@@ -1,0 +1,12 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        
+        odd = 0
+        
+        char = set(s)
+        
+        for i in char:
+            if s.count(i)%2==1:
+                odd += 1
+        
+        return True if odd<=1 else False
