@@ -1,0 +1,19 @@
+class Solution:
+    def shortestToChar(self, s: str, c: str) -> List[int]:
+        start = 0
+        ind = []
+        while c in s[start:] :
+            temp = start + s[start:].index(c)
+            ind.append(temp)
+            start = temp + 1
+        
+        output = []
+        for i in range(len(s)):
+            min = math.inf
+            for j in ind:
+                if abs(i-j)<min:
+                    min = abs(i-j)
+            
+            output.append(min)
+        
+        return output
