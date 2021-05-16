@@ -1,0 +1,12 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        
+        step = nums[0]
+        m = nums[0]
+        
+        for i in range(1,len(nums)):
+            step+=nums[i]
+            if m>step:
+                m = step
+        
+        return -m+1 if m<0 else 1
