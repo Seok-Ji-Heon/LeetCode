@@ -1,0 +1,14 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        h = {}
+        
+        for i in nums:
+            if i in h:
+                h[i]+=1
+            else:
+                h[i]=1
+        output = 0
+        for i in h.values():
+            output+=i*(i-1)
+        
+        return output//2
