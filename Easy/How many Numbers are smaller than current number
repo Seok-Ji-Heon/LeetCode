@@ -1,0 +1,21 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        num = sorted(nums)
+        h = {}
+        h[num[0]] = 0
+        rep = 1
+        for i in range(1,len(num)):
+            char = num[i]
+            
+            if char in h:
+                rep += 1
+            
+            else:
+                h[char] = h[num[i-1]]+rep
+                rep = 1
+                
+        output = []
+        
+        for i in nums:
+            output.append(h[i])
+        return output
