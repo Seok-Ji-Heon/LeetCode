@@ -1,0 +1,15 @@
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        output = 0
+        start = 0
+        char = 0
+        l = len(word)
+        while char<l:
+            ind = keyboard.index(word[char])
+            
+            output = output + abs(ind - start)
+            
+            start = ind
+            char+=1
+        
+        return output
