@@ -1,0 +1,43 @@
+class Solution:
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        l = []
+        M = 0
+        output = 0
+        if not ops:
+            return m*n
+        for i in range(m):
+            temp = []
+            for i in range(n):
+                temp.append(0)
+            
+            l.append(temp)
+        
+        for op in ops:
+            
+            for j in range(op[0]):
+                for k in range(op[1]):
+                    l[j][k]+=1
+                    if l[j][k]>M:
+                        M = l[j][k]
+                        output=1
+                    elif l[j][k]==M:
+                        output+=1
+        
+        return output
+        
+class Solution:
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        
+        if not ops:
+            return m*n
+        
+        a = math.inf
+        b = math.inf
+        for op in ops:
+            if op[0]<a:
+                a = op[0]
+            
+            if op[1]<b:
+                b = op[1]
+        
+        return a*b
