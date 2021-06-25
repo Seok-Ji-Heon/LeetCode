@@ -1,0 +1,28 @@
+class Solution:
+    def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
+        
+        if not nums:
+            if lower==upper:
+                return [str(lower)]
+            else:
+                return [str(lower)+'->'+str(upper)]
+        
+        
+        
+        
+        nums = [lower-1] + nums + [upper+1]
+        
+        l = len(nums)
+        
+        output = []
+        
+        for i in range(1,l):
+            
+            if nums[i]-nums[i-1]>2:
+                temp = str(nums[i-1]+1) + "->" + str(nums[i]-1)
+                output.append(temp)
+            elif nums[i]-nums[i-1]==2:
+                temp = str(nums[i-1]+1)
+                output.append(temp)
+        
+        return output
