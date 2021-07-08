@@ -71,3 +71,55 @@ class Solution:
                     helpervisited(nums,visited,a,b)
         
         return helper(grid,visited)
+        
+        
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        
+        m = len(grid)
+        n = len(grid[0])
+        
+        visited = []
+        
+        for i in range(m):
+            visited.append([False]*n)
+           
+        
+        def neighbor(nums:list, i:int, j: int):
+            
+            output = []
+            direction = [(1,0),(-1,0),(0,1),(0,-1)]
+            
+            for a,b in direction:
+                
+                if 0<=i+a<len(nums) and 0<=j+b<len(nums[0]):
+                    output.append((i+a,j+b))
+            
+            return output
+            
+            
+            
+        def helper(nums: list,visited:list,cnt=0):
+            
+            for i in range(m):
+                
+                for j in range(n):
+                    
+                    if not visited[i][j] and nums[i][j]=='1':
+                        helpervisited(nums,visited,i,j)
+                        cnt+=1
+                        
+            
+            return cnt
+                    
+                    
+                    
+        def helpervisited(nums:list, visited:list, i:int,j:int):
+            if not visited[i][j] and nums[i][j]=='1':
+                visited[i][j] = True
+                
+                for a,b in neighbor(nums,i,j):
+                    
+                    helpervisited(nums,visited,a,b)
+        
+        return helper(grid,visited)
