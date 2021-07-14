@@ -1,0 +1,23 @@
+class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        
+        def helper(num):
+            
+            char = str(num)
+            
+            for i in char:
+                
+                if int(i)==0 or num%int(i)!=0:
+                    return False
+            
+            return True
+        
+        output = []
+        for i in range(left,right+1):
+            
+            if helper(i):
+                
+                output.append(i)
+                
+        
+        return output
