@@ -1,0 +1,20 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        
+        if x>y:
+            x, y = y, x
+        
+        x = bin(x)[2:]
+        y = bin(y)[2:]
+        
+        while len(x)!=len(y):
+            
+            x ='0' + x
+            
+        output = 0
+        
+        for i,j in zip(x,y):
+            if i!=j:
+                output+=1
+        
+        return output
