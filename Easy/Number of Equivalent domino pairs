@@ -1,0 +1,19 @@
+class Solution:
+    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
+        h = {}
+        for i in dominoes:
+            
+            i.sort()
+            i = str(i)
+            
+            if i in h:
+                h[i]+=1
+            
+            else:
+                h[i]=0
+          
+        output = 0
+        for val in h.values():
+            output+=(val)*(val+1)//2
+            
+        return output
