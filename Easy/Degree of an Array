@@ -1,0 +1,39 @@
+class Solution:
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        
+        cnt = {}
+        
+        for i in nums:
+            
+            if i in cnt:
+                cnt[i]+=1
+            
+            else:
+                cnt[i] = 1
+                
+        
+        degree = max([i for i in cnt.values()])
+        
+        degrees = []
+        
+        for i,j in cnt.items():
+            
+            if j == degree:
+                degrees.append(i)
+                
+        
+        length = None
+        
+        for i in degrees:
+            
+            idx1 = nums.index(i)
+            idx2 = len(nums)-(nums[::-1].index(i))
+            
+            
+            if length==None:
+                length = len(nums[idx1:idx2])
+            
+            elif length> len(nums[idx1:idx2]):
+                length = len(nums[idx1:idx2])
+        
+        return length
