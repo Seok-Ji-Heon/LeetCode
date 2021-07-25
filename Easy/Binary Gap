@@ -1,0 +1,31 @@
+class Solution:
+    def binaryGap(self, n: int) -> int:
+        
+        dist = 0
+        
+        idx1 = None
+        
+        idx2 = None
+        
+        n = bin(n)[2:]
+        
+        
+        for i in range(len(n)):
+            
+            if n[i]=='1':
+                
+                if idx1==None:
+                    idx1 = i
+                
+                elif idx2==None:
+                    
+                    idx2 = i
+                    
+                    if idx2 - idx1 > dist:
+                        dist = idx2 - idx1
+                    
+                    idx1, idx2 = idx2, None
+            
+            
+        
+        return dist
