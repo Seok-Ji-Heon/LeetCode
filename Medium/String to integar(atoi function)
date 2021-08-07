@@ -1,0 +1,36 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        negative = False
+        word = ''
+        for i in range(len(s)):
+            
+            if s[i]!=' ':
+                word = s[i:]
+                break
+        
+        if word=='':
+            return 0
+        
+        if word[0] =='+':
+            negative = False
+            word = word[1:]
+        
+        elif word[0] == '-':
+            negative = True
+            word = word[1:]
+        
+        
+        output = 0
+        
+        for i in word:
+            
+            if i.isdigit():
+                output = 10*output + int(i)
+            else:
+                break
+        
+        if negative:
+            return -output if -output>-2**31 else -2**31
+        
+        else:
+            return output if output<2**31-1 else 2**31-1
