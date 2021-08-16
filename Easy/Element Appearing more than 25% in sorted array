@@ -1,0 +1,19 @@
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        
+        cnt = 1
+        prev = arr[0]
+        
+        for i in arr[1:]:
+            
+            if i==prev:
+                cnt+=1
+                prev = i
+            else:
+                if cnt>len(arr)/4:
+                    return prev
+                
+                prev = i
+                cnt = 1
+        
+        return arr[-1]
