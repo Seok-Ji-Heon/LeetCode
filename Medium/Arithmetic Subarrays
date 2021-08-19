@@ -1,0 +1,27 @@
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        
+        def checkArithmetic(nums: List):
+            
+            if len(nums)==2:
+                return True
+            
+            nums.sort()
+            
+            diff = nums[1] - nums[0]
+            
+            for i in range(1,len(nums)-1):
+                
+                if nums[i+1]-nums[i]!=diff:
+                    return False
+            
+            return True
+        
+        output = []
+        
+        for i,j in zip(l,r):
+            temp = nums[i:j+1]
+            
+            output.append(checkArithmetic(temp))
+        
+        return output
