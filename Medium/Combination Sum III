@@ -1,0 +1,29 @@
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        
+        nums = list(range(1,10))
+        output = []
+        def backtracking(comb, remain, curr, nums):
+            
+            if remain==0 and len(comb)==k:
+                output.append(list(comb))
+                return
+            
+            elif remain<0 or len(comb)>k:
+                return
+            
+            elif remain>0 and len(comb)<k:
+                
+                for next_curr in range(curr, len(nums)):
+                    
+                    if nums[next_curr] not in comb:
+                        
+                        comb.append(nums[next_curr])
+                        
+                        backtracking(comb, remain-nums[next_curr], next_curr, nums)
+                        comb.pop()
+        
+        backtracking([], n, 0, nums)
+        
+        return output
+                
