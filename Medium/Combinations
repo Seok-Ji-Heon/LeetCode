@@ -1,0 +1,27 @@
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        
+        nums = [i for i in range(1,n+1)]
+        
+        
+        def combination(nums:list, n: int):
+            
+            comb = []
+            if n==1:
+                for num in nums:
+                    comb.append([num])
+                
+                return comb
+            
+            else:
+                
+                for i in range(len(nums)-n+1):
+                    
+                    for temp in combination(nums[i+1:],n-1):
+                        
+                        temp.append(nums[i])
+                        comb.append(temp)
+                
+                return comb
+        
+        return combination(nums, k)
