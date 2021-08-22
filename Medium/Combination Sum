@@ -1,0 +1,24 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        
+        output = []
+        
+        def backtracking(comb, remain, curr, nums):
+            
+            if remain==0:
+                output.append(list(comb))
+                return
+            
+            elif remain<0:
+                return
+            
+            
+            for next_curr in range(curr,len(nums)):
+                comb.append(nums[next_curr])
+                backtracking(comb, remain-nums[next_curr], next_curr, nums)
+                comb.pop()
+            
+        
+        backtracking([], target, 0, candidates)
+        
+        return output
