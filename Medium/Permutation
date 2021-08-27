@@ -1,0 +1,22 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        
+        
+        def helper(nums:list):
+            permutations = []    
+            if len(nums)==1:
+                permutations.append(nums)
+                return permutations
+            
+            else:
+                
+                for i in range(len(nums)):
+                    
+                    for permutation in helper(nums[:i]+nums[i+1:]):
+                        permutations.append(permutation+[nums[i]])
+                
+                return permutations
+                        
+        
+        return helper(nums)
