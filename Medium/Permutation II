@@ -1,0 +1,23 @@
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        
+        def helper(nums:list):
+            
+            permutation = []
+            
+            if len(nums)==1:
+                permutation.append(nums)
+                return permutation
+            
+            else:
+                for i in range(len(nums)):
+                    
+                    for permute in helper(nums[:i]+nums[i+1:]):
+                        temp = permute + [nums[i]]
+                        
+                        if temp not in permutation:
+                            permutation.append(temp)
+            
+                return permutation
+            
+        return helper(nums)
