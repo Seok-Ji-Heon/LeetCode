@@ -1,0 +1,36 @@
+class Solution:
+    def arrayNesting(self, nums: List[int]) -> int:
+        mx = 0
+        for k in nums:
+            length, bucket = 0, []
+            while True:
+                bucket.append(k)
+                length +=1
+                
+                if mx<length:
+                    mx = length
+                
+                if nums[k] in bucket:
+                    break
+                k = nums[k]
+        return mx
+        
+ class Solution:
+    def arrayNesting(self, nums: List[int]) -> int:
+        mx = 0
+        visited = [False] * len(nums)
+        for i in range(len(nums)):
+            if visited[i]:
+                continue
+            length, bucket = 0, []
+            while True:
+                bucket.append(nums[i])
+                length +=1
+                visited[i] = True
+                if mx<length:
+                    mx = length
+                
+                if nums[nums[i]] in bucket:
+                    break
+                i = nums[i]
+        return mx
