@@ -1,0 +1,17 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        
+        if len(nums)==1:
+            return 0
+        
+        end = len(nums) - 1
+        cnt = 0
+        while end>0:
+            
+            for i in range(end):
+                if end - nums[i]<=i:
+                    end = i
+                    break
+            cnt +=1
+        
+        return cnt
