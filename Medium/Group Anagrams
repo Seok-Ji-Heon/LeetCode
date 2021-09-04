@@ -1,0 +1,22 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        
+        h = {}
+        
+        for word in strs:
+            
+            alpha = tuple(sorted(list(word)))
+            
+            if alpha in h:
+                h[alpha].append(word)
+            
+            else:
+                h[alpha] = [word]
+                
+        
+        output = []
+        
+        for item in h.values():
+            output.append(item)
+            
+        return output
