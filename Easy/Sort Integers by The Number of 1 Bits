@@ -1,0 +1,23 @@
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        
+        arr.sort()
+        
+        h = {}
+        
+        for num in arr:
+            
+            cnt = bin(num)[2:].count('1')
+            
+            if cnt in h:
+                h[cnt].append(num)
+            else:
+                h[cnt] = [num]
+        
+        
+        output = []
+        
+        for nums in sorted(h.items()):
+            output.extend(nums[1])
+            
+        return output
