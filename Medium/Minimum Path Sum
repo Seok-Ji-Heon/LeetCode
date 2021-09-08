@@ -1,0 +1,24 @@
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        
+        row = len(grid) - 1
+        column = len(grid[0]) - 1
+        path = 0
+        
+        def helper(grid, row, column, path):
+            
+            if row==0 and column==0:
+                return path+grid[0][0]
+            
+            elif row==0:
+                return helper(grid, row, column-1, path+grid[row][column])
+            
+            elif column==0:
+                return helper(grid, row-1, column, path+grid[row][column])
+            
+            else:
+                
+                return min(helper(grid, row-1, column, path+grid[row][column]), helper(grid, row, column-1, path+grid[row][column]))
+            
+        
+        return helper(grid, row, column, path)
