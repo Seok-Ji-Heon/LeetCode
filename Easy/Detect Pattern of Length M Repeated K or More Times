@@ -1,0 +1,11 @@
+class Solution:
+    def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
+        
+        for i in range(len(arr)-m+1):
+            
+            subarr = arr[i:i+m]
+            
+            if subarr*k == arr[i:i+k*m]:
+                return True
+        
+        return False
