@@ -1,0 +1,26 @@
+class Solution:
+    def shiftingLetters(self, s: str, shifts: List[int]) -> str:
+        
+        def shift(word):
+            if word=='z':
+                return 'a'
+            else:
+                return chr(ord(word)+1)
+        
+        shifts = shifts[::-1]
+        temp = 0
+        for i in range(len(shifts)):
+            temp+=shifts[i]
+            temp = temp%26
+            shifts[i] = temp
+        shifts = shifts[::-1]
+        
+        output = ''
+        
+        for i in range(len(shifts)):
+            temp = s[i]
+            for j in range(shifts[i]):
+                temp = shift(temp)
+            output+=temp
+        
+        return output
