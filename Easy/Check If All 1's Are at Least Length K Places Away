@@ -1,0 +1,22 @@
+class Solution:
+    def kLengthApart(self, nums: List[int], k: int) -> bool:
+        idx1, idx2 = None, None
+        for i in range(len(nums)):
+            
+            if nums[i]==1:
+                
+                if idx1==None and idx2==None:
+                    idx1=i
+                
+                elif idx2==None:
+                    idx2=i
+                    if idx2-idx1<=k:
+                        return False
+                
+                else:
+                    idx1, idx2 = idx2, i
+                    
+                    if idx2-idx1<=k:
+                        return False
+        
+        return True
