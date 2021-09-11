@@ -1,0 +1,18 @@
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        
+        temp = nums.copy()
+        
+        color = 0
+        idx = 0
+        while temp!=[]:
+            
+            if color in temp:
+                temp.remove(color)
+                nums[idx] = color
+                idx+=1
+            else:
+                color +=1
