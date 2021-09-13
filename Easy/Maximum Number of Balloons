@@ -1,0 +1,20 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        char = {'b':0, 'a':0, 'l':0, 'o':0, 'n':0}
+        
+        for word in text:
+            if word in char:
+                char[word]+=1
+        
+        mn = len(text)
+        
+        for i,j in char.items():
+            if i=='l' or i=='o':
+                cnt = j//2
+            else:
+                cnt = j
+            
+            if cnt<mn:
+                mn = cnt
+        
+        return mn
