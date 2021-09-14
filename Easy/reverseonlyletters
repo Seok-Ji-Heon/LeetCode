@@ -1,0 +1,20 @@
+class Solution:
+    def reverseOnlyLetters(self, s: str) -> str:
+        
+        word =''
+        others = {}
+        for i in range(len(s)):
+            
+            if s[i].isalpha():
+                word+=s[i]
+            else:
+                others[i] = s[i]
+        word = word[::-1]
+        cnt = 0
+        
+        for idx,other in others.items():
+            
+            word = word[:idx] + other + word[idx:]
+            
+        
+        return word
