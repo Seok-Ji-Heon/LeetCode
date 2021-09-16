@@ -1,0 +1,38 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        
+        row, column = 0, 0
+        
+        step = [(0,1),(1,0),(0,-1),(-1,0)]
+        
+        visited = [[False]*len(matrix[0]) for _ in range(len(matrix))]
+        
+        idx = 0
+        
+        result = []
+        
+        def traversal(matrix:list, row:int, column:int, visited:list, step:list, idx:int) -> None:
+            
+            if row>=len(matrix) or column>=len(matrix[0]) or visited[row][column]==True:
+                return
+            
+            else:
+                
+                visited[row][column] = True
+                result.append(matrix[row][column])
+                
+                next_row = row+step[idx][0]
+                next_column = column+step[idx][1]
+                
+                if next_row>=len(matrix) or next_column>=len(matrix[0]) or visited[next_row][next_column]==True:
+                    
+                    if idx==len(step)-1:
+                        idx=0
+                    else:
+                        idx+=1
+                
+                traversal(matrix, row+step[idx][0], column+step[idx][1], visited, step, idx)
+        
+        traversal(matrix, row, column, visited, step, idx)
+        
+        return result 
