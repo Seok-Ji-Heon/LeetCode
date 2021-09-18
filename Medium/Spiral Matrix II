@@ -1,0 +1,33 @@
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        
+        top, bottom = 0, n - 1
+        left, right = 0, n - 1
+        
+        matrix = [[1]*n for _ in range(n)]
+        
+        while left<right:
+            
+            for i in range(left+1, right+1):
+                matrix[top][i] = matrix[top][i-1] + 1
+            
+            for i in range(top+1, bottom+1):
+                matrix[i][right] = matrix[i-1][right] + 1
+            
+            for i in range(right-1, left-1, -1):
+                matrix[bottom][i] = matrix[bottom][i+1] + 1
+                
+            for i in range(bottom-1, top, -1):
+                matrix[i][left] = matrix[i+1][left] + 1
+                
+            
+            
+            left+=1
+            top +=1
+            right-=1
+            bottom-=1
+            
+            if matrix[top][left]==1:
+                matrix[top][left] = matrix[top][left-1]+1
+        
+        return matrix
