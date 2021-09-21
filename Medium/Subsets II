@@ -1,0 +1,28 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        
+        def combination(nums,n):
+            comb=[]
+            
+            if n==1:
+                for num in nums:
+                    if [num] not in comb:
+                        comb.append([num])
+                return comb
+            else:
+                
+                for i in range(len(nums)-n+1):
+                    
+                    for temp in combination(nums[i+1:],n-1):
+                        temp.append(nums[i])
+                        temp.sort()
+                        if temp not in comb:
+                            comb.append(temp)
+                
+                return comb
+        result = [[]]
+        for i in range(1,len(nums)+1):
+            temp = combination(nums,i)
+            result.extend(temp)
+        
+        return result
