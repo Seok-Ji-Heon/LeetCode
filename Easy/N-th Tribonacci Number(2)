@@ -1,0 +1,14 @@
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        
+        info = {0:0, 1:1, 2:1}
+        
+        def helper(n):
+            
+            if n in info:
+                return info[n]
+            else:
+                info[n] = helper(n-1) + helper(n-2) + helper(n-3)
+                return info[n]
+        
+        return helper(n)
